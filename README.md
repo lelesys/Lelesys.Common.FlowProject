@@ -1,5 +1,10 @@
 # Lelesys.Common.FlowProject
 Common stuff and helpers for Flow Framework based projects
+
+To install:
+```
+composer require lelesys/common-flowproject
+```
 ## Adding query string parameter to static resource URIs
 Query string parameter "v=INTEGER" is added to the static resource URIs. By default CSS and Javascript URIs are enabled. This can be combined with setting far future cache headers from web server configuration. This is very helpful when a new version of application is deployed the cached version string is regenrated which forces reload of the static resource in clients' browsers.
 
