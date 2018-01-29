@@ -1,7 +1,7 @@
 <?php
 namespace Lelesys\Common\FlowProject\Traits;
 
-use Neos\Flow\Annotations as Flow;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * Trait ApplicationVersionTrait
@@ -11,7 +11,7 @@ trait ApplicationVersionTrait
 
     /**
      * @Flow\Inject
-     * @var \Neos\Flow\Cache\CacheManager
+     * @var \TYPO3\Flow\Cache\CacheManager
      */
     protected $_cacheManager;
 

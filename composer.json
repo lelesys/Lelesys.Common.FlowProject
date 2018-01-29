@@ -4,7 +4,7 @@
     "name": "lelesys/common-flowproject",
 	"license": "GPL-3.0-or-later",
     "require": {
-        "neos/flow": "^4.0"
+        "typo3/flow": "^3.0"
     },
     "autoload": {
         "psr-4": {

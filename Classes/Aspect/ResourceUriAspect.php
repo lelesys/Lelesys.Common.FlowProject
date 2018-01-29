@@ -1,9 +1,9 @@
 <?php
 namespace Lelesys\Common\FlowProject\Aspect;
 
-use Neos\Flow\Annotations as Flow;
-use Neos\Flow\AOP\JoinPointInterface;
-use Neos\Flow\Http\Uri;
+use TYPO3\Flow\Annotations as Flow;
+use TYPO3\Flow\AOP\JoinPointInterface;
+use TYPO3\Flow\Http\Uri;
 use Lelesys\Common\FlowProject\Traits\ApplicationVersionTrait;
 
 /**
@@ -32,7 +32,7 @@ class ResourceUriAspect
     /**
      * Returns version number stored in the cache
      *
-     * @Flow\Around("method(Neos\FluidAdaptor\ViewHelpers\Uri\ResourceViewHelper->render())")
+     * @Flow\Around("method(TYPO3\Fluid\ViewHelpers\Uri\ResourceViewHelper->render())")
      * @param JoinPointInterface $joinPoint
      * @return string
      */
