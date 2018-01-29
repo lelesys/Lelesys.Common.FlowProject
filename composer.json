@@ -1,0 +1,19 @@
+{
+    "description": "Common stuff and helpers for Flow Framework based projects",
+    "type": "neos-package",
+    "name": "lelesys/common-flowproject",
+	"license": "GPL-3.0+",
+    "require": {
+        "neos/flow": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lelesys\\Common\\FlowProject\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Lelesys.Common.FlowProject"
+        }
+    }
+}

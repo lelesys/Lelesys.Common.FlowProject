@@ -1,0 +1,6 @@
+Lelesys:
+  Common:
+    FlowProject:
+      resourceUri:
+        matchingRegex: '/\.(js|css)$/'
+        enabledPackages: []
