@@ -2,7 +2,7 @@
     "description": "Common stuff and helpers for Flow Framework based projects",
     "type": "neos-package",
     "name": "lelesys/common-flowproject",
-	"license": "GPL-3.0+",
+	"license": "GPL-3.0-or-later",
     "require": {
         "neos/flow": "^4.0"
     },
