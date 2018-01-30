@@ -5,7 +5,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\AOP\JoinPointInterface;
 use Neos\Flow\Http\Uri;
 use Lelesys\Common\FlowProject\Traits\ApplicationVersionTrait;
-use Neos\Flow\Reflection\ObjectAccess;
+use Neos\Utility\ObjectAccess;
 
 /**
  * Class ResourceUriAspect
