@@ -5,6 +5,7 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\AOP\JoinPointInterface;
 use TYPO3\Flow\Http\Uri;
 use Lelesys\Common\FlowProject\Traits\ApplicationVersionTrait;
+use TYPO3\Flow\Reflection\ObjectAccess;
 
 /**
  * Class ResourceUriAspect
@@ -45,8 +46,14 @@ class ResourceUriAspect
         }
         $packageKey = $joinPoint->getMethodArgument('package');
         if ($packageKey === null) {
-            $packageUri = new Uri($joinPoint->getMethodArgument('path'));
-            $packageKey = $packageUri->getHost();
+            $path = $joinPoint->getMethodArgument('path');
+            if (strpos($path, 'resource://') === 0) {
+                $packageUri = new Uri($path);
+                $packageKey = $packageUri->getHost();
+            } else {
+                $controllerContext = ObjectAccess::getProperty($joinPoint->getProxy(), 'controllerContext', true);
+                $packageKey = $controllerContext->getRequest()->getControllerPackageKey();
+            }
         }
         if (! in_array($packageKey, $this->enabledPackages)) {
             return $result;
