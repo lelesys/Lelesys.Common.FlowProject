@@ -14,7 +14,8 @@ Lelesys:
   Common:
     FlowProject:
       resourceUri:
-        enabledPackages: ['Your.Package']
+        enabledPackages:
+          'Your.Package': true
 ```
 To enable other kinds of URIs modify the regular expression from settings:
 ```

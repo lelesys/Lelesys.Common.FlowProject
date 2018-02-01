@@ -5,7 +5,6 @@ use TYPO3\Flow\Annotations as Flow;
 use TYPO3\Flow\AOP\JoinPointInterface;
 use TYPO3\Flow\Http\Uri;
 use Lelesys\Common\FlowProject\Traits\ApplicationVersionTrait;
-use TYPO3\Flow\Reflection\ObjectAccess;
 
 /**
  * Class ResourceUriAspect
@@ -33,29 +32,17 @@ class ResourceUriAspect
     /**
      * Returns version number stored in the cache
      *
-     * @Flow\Around("method(TYPO3\Fluid\ViewHelpers\Uri\ResourceViewHelper->render())")
+     * @Flow\Around("method(TYPO3\Flow\Resource\ResourceManager->getPublicPackageResourceUri())")
      * @param JoinPointInterface $joinPoint
      * @return string
      */
     public function addApplicationVersionToResourceUri(JoinPointInterface $joinPoint)
     {
         $result = $joinPoint->getAdviceChain()->proceed($joinPoint);
-        // not touching persistent resource uris
-        if ($joinPoint->getMethodArgument('resource') !== null) {
-            return $result;
-        }
-        $packageKey = $joinPoint->getMethodArgument('package');
-        if ($packageKey === null) {
-            $path = $joinPoint->getMethodArgument('path');
-            if (strpos($path, 'resource://') === 0) {
-                $packageUri = new Uri($path);
-                $packageKey = $packageUri->getHost();
-            } else {
-                $controllerContext = ObjectAccess::getProperty($joinPoint->getProxy(), 'controllerContext', true);
-                $packageKey = $controllerContext->getRequest()->getControllerPackageKey();
-            }
-        }
-        if (! in_array($packageKey, $this->enabledPackages)) {
+
+        $packageKey = $joinPoint->getMethodArgument('packageKey');
+
+        if (! (isset($this->enabledPackages[$packageKey]) && $this->enabledPackages[$packageKey] === true)) {
             return $result;
         }
         if (! preg_match($this->uriMatchingRegex, $result)) {
